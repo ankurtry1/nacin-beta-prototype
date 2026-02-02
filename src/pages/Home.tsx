@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Container from '../components/Container'
 import Badge from '../components/Badge'
+import Button from '../components/Button'
 import { notices } from '../data/notices'
 import dgPhoto from '../assets/DG.JPG'
 import banner1 from '../assets/Banner/1.jpg'
@@ -118,10 +119,15 @@ export default function Home() {
             <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 z-30">
               <Container>
-                <div className="pb-6 pt-12">
+                <div className="pb-6 pt-16">
                   <h1 className="max-w-4xl text-left text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
                     National Academy of Customs, Indirect Taxes & Narcotics
                   </h1>
+                  <div className="mt-4 flex flex-wrap gap-3">
+                    <Button as="route" to="/programs" onClick={() => track({ name: 'hero_cta_programs' })}>
+                      Programs & Training
+                    </Button>
+                  </div>
                 </div>
               </Container>
             </div>
@@ -129,6 +135,27 @@ export default function Home() {
         </div>
         <Container>
           <div className="py-0" />
+        </Container>
+      </div>
+
+      {/* Institutional highlights */}
+      <div className="bg-nacin-50/70 dark:bg-slate-900/30">
+        <Container>
+          <div className="py-6">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { t: 'National mandate', d: 'Premier training and knowledge institute for CBIC officers.' },
+                { t: 'Centres of excellence', d: 'Focused capability building across key domains.' },
+                { t: 'Digital learning (LMS)', d: 'Structured learning with assessments and certifications.' },
+                { t: 'Research & publications', d: 'Briefs, studies, and knowledge resources for governance.' }
+              ].map((c) => (
+                <div key={c.t} className="rounded-2xl border border-nacin-100 bg-white p-4 shadow-soft dark:border-slate-800 dark:bg-slate-950">
+                  <div className="text-xs font-semibold uppercase tracking-wide text-nacin-700 dark:text-nacin-300">{c.t}</div>
+                  <div className="mt-2 text-sm text-slate-700 dark:text-slate-200">{c.d}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </Container>
       </div>
 
@@ -156,6 +183,9 @@ export default function Home() {
               ))}
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft dark:border-slate-900 dark:bg-slate-950">
+              <div className="text-xs font-semibold uppercase tracking-wide text-nacin-700 dark:text-nacin-300">
+                From the Director General
+              </div>
               <div className="rounded-xl bg-slate-50 p-2 dark:bg-slate-900/40">
                 <img src={dgPhoto} alt="Director General, NACIN" className="h-72 w-full rounded-lg object-contain" />
               </div>

@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 .ticker-track {
-  animation: ticker-scroll 28s linear infinite;
+  animation: ticker-scroll 40s linear infinite;
   will-change: transform;
+}
+
+.ticker-mask:hover .ticker-track {
+  animation-play-state: paused;
 }
 
 .hero-slide {
