@@ -7,6 +7,11 @@
   will-change: transform;
 }
 
+.hero-slide {
+  transition: opacity 1400ms ease-in-out;
+  will-change: opacity;
+}
+
 @keyframes ticker-scroll {
   0% {
     transform: translateX(0);

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Container from './Container'
 import Logo from './Logo'
+import Button from './Button'
 import { nav } from './nav'
 import { track } from '../lib/analytics'
 import emblemUrl from '../assets/emblem-dark.png'
@@ -90,6 +91,9 @@ export default function Header() {
                 </div>
               ))}
             </nav>
+            <Button as="route" to="/programs" onClick={() => track({ name: 'cta_programs' })}>
+              Programs & Training
+            </Button>
           </div>
 
           <div className="hidden lg:flex items-center gap-3">

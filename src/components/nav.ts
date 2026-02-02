@@ -10,15 +10,6 @@ export const nav: NavItem[] = [
     ]
   },
   {
-    label: 'Programs & Training',
-    to: '/programs',
-    children: [
-      { label: 'IRS Officer Professional Training', to: '/programs#irs', desc: 'Induction and professional modules' },
-      { label: 'OT-Cell', to: '/programs#otcell', desc: 'OT tools, ethics, and professional skills' },
-      { label: 'Admissions & Nominations', to: '/programs#admissions', desc: 'Nomination pathways and timelines (beta)' }
-    ]
-  },
-  {
     label: 'Digital Learning',
     children: [
       { label: 'LMS Overview', to: '/programs#lms', desc: 'Digital learning ecosystem and catalog' },

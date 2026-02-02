@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Container from '../components/Container'
-import Button from '../components/Button'
 import Badge from '../components/Badge'
 import { notices } from '../data/notices'
 import dgPhoto from '../assets/DG.JPG'
@@ -78,27 +77,23 @@ export default function Home() {
       <div id="notices" className="border-b border-slate-200 bg-slate-50 dark:border-slate-900 dark:bg-slate-950">
         <Container>
           <div className="py-3">
-            <div className="flex items-center justify-between gap-4">
-              <div className="text-xs font-semibold uppercase tracking-wide text-nacin-700 dark:text-nacin-300">
+            <div className="flex items-center gap-4 overflow-hidden rounded-2xl border border-slate-200 bg-white px-4 py-3 dark:border-slate-900 dark:bg-slate-950">
+              <div className="shrink-0 text-xs font-semibold uppercase tracking-wide text-nacin-700 dark:text-nacin-300">
                 News & Updates
               </div>
-              <Link to="#" className="text-xs font-semibold text-nacin-700 hover:text-nacin-800 dark:text-nacin-300 dark:hover:text-white">
-                View all (Beta)
-              </Link>
-            </div>
-
-            <div className="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-900 dark:bg-slate-950">
-              <div className="ticker-track flex gap-8 whitespace-nowrap px-4 py-3 text-sm text-slate-700 dark:text-slate-200">
-                {notices.concat(notices).map((n, i) => (
-                  <div key={`${n.id}-${i}`} className="inline-flex items-center gap-3">
-                    <span className="rounded-full bg-nacin-100 px-2 py-0.5 text-xs font-semibold text-nacin-900 dark:bg-slate-900 dark:text-slate-100">
-                      {n.tag ?? 'Update'}
-                    </span>
-                    <span className="text-slate-500 dark:text-slate-400">{n.date}</span>
-                    <span className="font-semibold">{n.title}</span>
-                    <span className="text-slate-400">•</span>
-                  </div>
-                ))}
+              <div className="ticker-mask min-w-0 flex-1 overflow-hidden">
+                <div className="ticker-track flex gap-8 whitespace-nowrap text-sm text-slate-700 dark:text-slate-200">
+                  {notices.concat(notices).map((n, i) => (
+                    <div key={`${n.id}-${i}`} className="inline-flex items-center gap-3">
+                      <span className="rounded-full bg-nacin-100 px-2 py-0.5 text-xs font-semibold text-nacin-900 dark:bg-slate-900 dark:text-slate-100">
+                        {n.tag ?? 'Update'}
+                      </span>
+                      <span className="text-slate-500 dark:text-slate-400">{n.date}</span>
+                      <span className="font-semibold">{n.title}</span>
+                      <span className="text-slate-400">•</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -107,57 +102,33 @@ export default function Home() {
 
       {/* Hero */}
       <div className="bg-gradient-to-b from-nacin-50 to-white dark:from-slate-950 dark:to-slate-950">
-        <Container>
-          <div className="grid gap-8 py-8 lg:grid-cols-2 lg:items-center lg:py-12">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200">
-                <span className="h-2 w-2 rounded-full bg-nacin-600" />
-                Modern Government • Beta Prototype
-              </div>
-
-              <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 sm:text-5xl">
-                Building capability for customs, indirect taxes, and enforcement through world-class training.
-              </h1>
-
-              <p className="mt-4 text-base text-slate-600 dark:text-slate-300">
-                A modern, mobile-first front door for NACIN: clear navigation, structured programs, and a scalable knowledge hub.
-              </p>
-
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button as="route" to="/" variant="secondary" onClick={() => track({ name: 'home_cta_explore' })}>
-                  Explore NACIN
-                </Button>
-                <Button as="route" to="/programs" onClick={() => track({ name: 'home_cta_programs' })}>
-                  Programs & Training
-                </Button>
-              </div>
-
-              <div className="mt-6 flex flex-wrap gap-2">
-                <Badge>Admissions & Nominations (Beta)</Badge>
-                <Badge>Research & Knowledge Hub (Beta)</Badge>
-                <Badge>International Engagements (Beta)</Badge>
-              </div>
-            </div>
-
-            <div className="rounded-3xl border border-slate-200 bg-white p-3 shadow-soft dark:border-slate-900 dark:bg-slate-950">
-              <div className="relative h-[280px] overflow-hidden rounded-2xl sm:h-[360px]">
-                {heroImages.map((src, idx) => (
-                  <img
-                    key={src}
-                    src={src}
-                    alt="NACIN training and campus moments"
-                    className={[
-                      'absolute inset-0 h-full w-full object-cover transition-opacity duration-1000',
-                      idx === heroIndex ? 'opacity-100' : 'opacity-0'
-                    ].join(' ')}
-                  />
-                ))}
-              </div>
-              <div className="mt-3 text-xs text-slate-600 dark:text-slate-300">
-                Live event and campus imagery from NACIN programs.
-              </div>
+        <div className="w-full border-y border-slate-200 bg-white/70 shadow-soft dark:border-slate-900 dark:bg-slate-950/80">
+          <div className="relative h-[320px] overflow-hidden ring-1 ring-slate-200/60 sm:h-[420px] lg:h-[520px] dark:ring-slate-900/60">
+            {heroImages.map((src, idx) => (
+              <img
+                key={src}
+                src={src}
+                alt="NACIN training and campus moments"
+                className={[
+                  'hero-slide absolute inset-0 h-full w-full object-cover',
+                  idx === heroIndex ? 'opacity-100 z-10' : 'opacity-0 z-0'
+                ].join(' ')}
+              />
+            ))}
+            <div className="absolute inset-0 z-20 bg-gradient-to-t from-slate-950/70 via-slate-950/20 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 z-30">
+              <Container>
+                <div className="pb-6 pt-12">
+                  <h1 className="max-w-4xl text-left text-2xl font-extrabold tracking-tight text-white sm:text-3xl lg:text-4xl">
+                    National Academy of Customs, Indirect Taxes & Narcotics
+                  </h1>
+                </div>
+              </Container>
             </div>
           </div>
+        </div>
+        <Container>
+          <div className="py-0" />
         </Container>
       </div>
 
@@ -165,8 +136,8 @@ export default function Home() {
       <Container>
         <div className="py-8">
           <SectionTitle
-            eyebrow="About"
-            title="National Academy of Customs, Indirect Taxes and Narcotics"
+            eyebrow="About Us"
+            title="NACIN: Advancing capability in customs, indirect taxes, and enforcement"
             desc="The National Academy of Customs, Indirect Taxes and Narcotics (NACIN) serves as the premier training and knowledge institution for officers of the Central Board of Indirect Taxes and Customs (CBIC). Through structured training programmes, research initiatives, and digital learning platforms, NACIN supports professional excellence and institutional capacity in the fields of customs, indirect taxation, and enforcement."
           />
 
