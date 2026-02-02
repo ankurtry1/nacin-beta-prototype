@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.ticker-track {
+  animation: ticker-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 :focus-visible {
   outline: 2px solid rgb(77, 125, 255);
   outline-offset: 2px;

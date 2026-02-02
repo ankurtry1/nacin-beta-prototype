@@ -74,10 +74,41 @@ export default function Home() {
 
   return (
     <div>
+      {/* Updates ticker */}
+      <div id="notices" className="border-b border-slate-200 bg-slate-50 dark:border-slate-900 dark:bg-slate-950">
+        <Container>
+          <div className="py-3">
+            <div className="flex items-center justify-between gap-4">
+              <div className="text-xs font-semibold uppercase tracking-wide text-nacin-700 dark:text-nacin-300">
+                News & Updates
+              </div>
+              <Link to="#" className="text-xs font-semibold text-nacin-700 hover:text-nacin-800 dark:text-nacin-300 dark:hover:text-white">
+                View all (Beta)
+              </Link>
+            </div>
+
+            <div className="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-900 dark:bg-slate-950">
+              <div className="ticker-track flex gap-8 whitespace-nowrap px-4 py-3 text-sm text-slate-700 dark:text-slate-200">
+                {notices.concat(notices).map((n, i) => (
+                  <div key={`${n.id}-${i}`} className="inline-flex items-center gap-3">
+                    <span className="rounded-full bg-nacin-100 px-2 py-0.5 text-xs font-semibold text-nacin-900 dark:bg-slate-900 dark:text-slate-100">
+                      {n.tag ?? 'Update'}
+                    </span>
+                    <span className="text-slate-500 dark:text-slate-400">{n.date}</span>
+                    <span className="font-semibold">{n.title}</span>
+                    <span className="text-slate-400">•</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Container>
+      </div>
+
       {/* Hero */}
       <div className="bg-gradient-to-b from-nacin-50 to-white dark:from-slate-950 dark:to-slate-950">
         <Container>
-          <div className="grid gap-8 py-10 lg:grid-cols-2 lg:items-center lg:py-16">
+          <div className="grid gap-8 py-8 lg:grid-cols-2 lg:items-center lg:py-12">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-200">
                 <span className="h-2 w-2 rounded-full bg-nacin-600" />
@@ -132,7 +163,7 @@ export default function Home() {
 
       {/* About */}
       <Container>
-        <div className="py-12">
+        <div className="py-8">
           <SectionTitle
             eyebrow="About"
             title="National Academy of Customs, Indirect Taxes and Narcotics"
@@ -154,7 +185,9 @@ export default function Home() {
               ))}
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft dark:border-slate-900 dark:bg-slate-950">
-              <img src={dgPhoto} alt="Director General, NACIN" className="h-56 w-full rounded-xl object-cover" />
+              <div className="rounded-xl bg-slate-50 p-2 dark:bg-slate-900/40">
+                <img src={dgPhoto} alt="Director General, NACIN" className="h-72 w-full rounded-lg object-contain" />
+              </div>
               <div className="mt-4 text-sm font-semibold text-slate-900 dark:text-slate-50">Director General</div>
               <div className="mt-1 text-xs text-slate-600 dark:text-slate-300">
                 Leadership focused on professional excellence and institutional capability.
@@ -163,44 +196,6 @@ export default function Home() {
           </div>
         </div>
       </Container>
-
-      {/* Notices ticker */}
-      <div id="notices" className="border-y border-slate-200 bg-slate-50 dark:border-slate-900 dark:bg-slate-950">
-        <Container>
-          <div className="py-6">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <div className="text-xs font-semibold uppercase tracking-wide text-nacin-700 dark:text-nacin-300">
-                  News & Updates
-                </div>
-                <div className="mt-1 text-lg font-bold text-slate-900 dark:text-slate-50">Latest notices (ticker)</div>
-              </div>
-              <Link to="#" className="text-sm font-semibold text-nacin-700 hover:text-nacin-800 dark:text-nacin-300 dark:hover:text-white">
-                View all (Beta)
-              </Link>
-            </div>
-
-            <div className="mt-4 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-slate-900 dark:bg-slate-950">
-              <div className="flex gap-8 whitespace-nowrap px-4 py-3 text-sm text-slate-700 dark:text-slate-200">
-                {notices.concat(notices).map((n, i) => (
-                  <div key={`${n.id}-${i}`} className="inline-flex items-center gap-3">
-                    <span className="rounded-full bg-nacin-100 px-2 py-0.5 text-xs font-semibold text-nacin-900 dark:bg-slate-900 dark:text-slate-100">
-                      {n.tag ?? 'Update'}
-                    </span>
-                    <span className="text-slate-500 dark:text-slate-400">{n.date}</span>
-                    <span className="font-semibold">{n.title}</span>
-                    <span className="text-slate-400">•</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-2 text-xs text-slate-500 dark:text-slate-400">
-              Note: ticker is static in prototype; can be wired to CMS/notice board post approval.
-            </div>
-          </div>
-        </Container>
-      </div>
 
       {/* Featured pathways */}
       <Container>
