@@ -27,7 +27,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npm run build
+        run: BASE_PATH=/nacin-beta-prototype/ npm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

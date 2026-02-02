@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   assetsInclude: ['**/*.JPG'],
-  base: '/nacin-beta-prototype/',
+  base: process.env.BASE_PATH || '/',
   server: {
     port: 5173,
     strictPort: true,
