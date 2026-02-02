@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NACIN (Beta Prototype)</title>
+    <meta name="description" content="NACIN website beta prototype (homepage + flagship page) for pilot approval." />
+
+    <!--
+      Analytics placeholder:
+      - For offline demo, keep this disabled.
+      - For production, replace with your approved analytics (e.g., NIC/GIGW-compliant setup).
+      - Example: add a script tag here, and wire events in src/lib/analytics.ts
+    -->
+    <script>
+      window.__NACIN_ANALYTICS__ = { enabled: false, provider: "placeholder" };
+    </script>
+  </head>
+  <body class="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-50">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
