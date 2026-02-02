@@ -38,3 +38,5 @@ The static output is generated in `dist/`.
 ## Notes
 - Search / Language toggle / Portal are intentionally marked “Beta” and can be enabled post pilot approval.
 - Analytics is a placeholder to be wired to an approved provider later.
+# nacin-beta-prototype
+NACIN website prototype
